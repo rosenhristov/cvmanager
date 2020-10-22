@@ -1,7 +1,7 @@
 package com.scalefocus.cvmanager.model.employee;
 
 import com.google.common.collect.Multimap;
-import com.scalefocus.cvmanager.model.Adress;
+import com.scalefocus.cvmanager.model.Address;
 import com.scalefocus.cvmanager.model.Project;
 import com.scalefocus.cvmanager.model.Skill;
 import com.scalefocus.cvmanager.model.TechnologyCategory;
@@ -24,7 +24,7 @@ public class Employee {
     protected String lastName;
     protected String phone;
     @OneToMany
-    protected Adress address;
+    protected Address address;
     protected String photo;
     @OneToMany
     protected DirectManager manager;
@@ -90,11 +90,11 @@ public class Employee {
         this.phone = phone;
     }
 
-    public Adress getAddress() {
+    public Address getAddress() {
         return address;
     }
 
-    public void setAddress(Adress address) {
+    public void setAddress(Address address) {
         this.address = address;
     }
 

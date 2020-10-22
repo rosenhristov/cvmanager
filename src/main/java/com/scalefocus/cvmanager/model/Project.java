@@ -2,7 +2,6 @@ package com.scalefocus.cvmanager.model;
 
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
@@ -11,7 +10,6 @@ import javax.persistence.ManyToMany;
 import java.util.Date;
 import java.util.List;
 
-@Component
 @AllArgsConstructor
 @Entity
 public class Project {

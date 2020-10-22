@@ -1,13 +1,18 @@
 package com.scalefocus.cvmanager.repository;
 
-import com.scalefocus.cvmanager.model.Technology;
 import com.scalefocus.cvmanager.model.employee.Employee;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import java.util.List;
+import java.util.Optional;
 
 public interface EmployeeRepository extends JpaRepository<Employee, Long> {
 
-    List<Employee> findByProject(String projectName);
-    List<Employee> findByTechnology(Technology technologyName);
+    default Optional<Employee> removeById(Long id) {
+        Optional<Employee> employee = findById(id);
+        if (employee.isPresent()) {
+            delete(employee.get());
+            return employee;
+        }
+        return Optional.empty();
+    }
 }

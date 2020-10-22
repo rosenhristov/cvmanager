@@ -4,12 +4,12 @@ import com.scalefocus.cvmanager.model.Project;
 import com.scalefocus.cvmanager.repository.ProjectRepository;
 import com.scalefocus.cvmanager.repository.TechnologyRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
-@Component
+@Service
 public class ProjectService {
 
     private ProjectRepository projectRepository;
@@ -43,7 +43,7 @@ public class ProjectService {
         return projectRepository.saveAll(newEmployee);
     }
 
-    public void deleteProject(String name) {
-        projectRepository.deleteByName(name);
+    public Optional<Project> deleteProject(String name) {
+        return projectRepository.remove(name);
     }
 }

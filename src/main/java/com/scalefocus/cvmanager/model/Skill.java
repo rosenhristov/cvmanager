@@ -10,7 +10,8 @@ import javax.persistence.Id;
 @AllArgsConstructor
 public class Skill {
 
-    protected @Id String name;
+    @Id
+    protected String name;
     protected String maturity;
     protected int yearsOfExperience;
 

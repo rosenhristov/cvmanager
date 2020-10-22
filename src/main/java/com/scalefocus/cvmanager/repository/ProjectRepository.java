@@ -11,6 +11,13 @@ public interface ProjectRepository extends JpaRepository<Project, String> {
 
     Optional<Project> findByName(String projectName);
     List<Project> getByTechnology(Technology technology);
-    void deleteByName(String name);
+    default Optional<Project> remove(String name) {
+        Optional<Project> project = findByName(name);
+        if (project.isPresent()) {
+            delete(project.get());
+            return project;
+        }
+        return Optional.empty();
+    }
 
 }

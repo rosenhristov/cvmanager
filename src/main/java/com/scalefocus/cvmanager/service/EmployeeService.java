@@ -5,13 +5,13 @@ import com.scalefocus.cvmanager.repository.EmployeeRepository;
 import com.scalefocus.cvmanager.repository.ProjectRepository;
 import com.scalefocus.cvmanager.repository.TechnologyRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
-@Component
+@Service
 public class EmployeeService {
 
     private EmployeeRepository employeeRepository;
@@ -34,14 +34,6 @@ public class EmployeeService {
         return employeeRepository.findAll();
     }
 
-    public List<Employee> getByProject(String projectName) {
-        return employeeRepository.findByProject(projectName);
-    }
-
-    public List<Employee> getByTechnology(String technologyName) {
-        return employeeRepository.findByTechnology(technologyRepository.findByName(technologyName));
-    }
-
     public List<Employee> getByCurrentProject(String projectName) {
         return  employeeRepository.findAll().stream()
                     .filter(employee -> employee.getCurrentProject().equals(projectName))
@@ -62,7 +54,7 @@ public class EmployeeService {
         return employeeRepository.saveAll(employee);
     }
 
-    public void deleteEmployee(Long id) {
-        employeeRepository.deleteById(id);
+    public Optional<Employee> deleteEmployee(Long id) {
+        return employeeRepository.removeById(id);
     }
 }

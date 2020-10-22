@@ -1,27 +1,41 @@
 package com.scalefocus.cvmanager.model;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 
-@Component
-public class Adress {
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 
-    private String country;
+@Entity
+public class Address {
+
+    @Id
+    @GeneratedValue
+    private int id;
     private int postalCode;
     private String city;
     private String street;
     private int streetNumber;
+    private String country;
 
-    @Autowired
-    public Adress() {
+    public Address() {
     }
 
-    public Adress(String country, int postalCode, String city, String street, int streetNumber) {
+    @Autowired
+    public Address(String country, int postalCode, String city, String street, int streetNumber) {
         this.country = country;
         this.postalCode = postalCode;
         this.city = city;
         this.street = street;
         this.streetNumber = streetNumber;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getCountry() {

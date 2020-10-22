@@ -3,12 +3,12 @@ package com.scalefocus.cvmanager.service;
 import com.scalefocus.cvmanager.model.Technology;
 import com.scalefocus.cvmanager.repository.TechnologyRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
-@Component
+@Service
 public class TechnologyService {
 
     private TechnologyRepository technologyRepository;
@@ -34,7 +34,7 @@ public class TechnologyService {
          return technologyRepository.saveAll(techList);
     }
 
-    public void deleteTechnology(String name) {
-        technologyRepository.deleteByName(name);
+    public Optional<Technology> deleteTechnology(String name) {
+        return technologyRepository.remove(name);
     }
 }
